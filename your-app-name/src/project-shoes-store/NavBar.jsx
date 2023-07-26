@@ -2,18 +2,22 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
 export default class NavBar extends Component {
+  calCart = arr => {
+    let number = arr.reduce((total, item) => {
+      return total + item.quantity;
+    }, 0);
+    return number;
+  };
   render() {
     return (
       <nav className='navbar navbar-expand-lg navbar-dark bg-dark m-1'>
         <div className='container-fluid'>
-          <NavLink to='/' style={{textDecoration:'none'}}>
           <a
             className='navbar-brand'
             style={{ margin: `0 10px 0 10px`, color: `white` }}
             href='#'>
             <h3> Meimei Shop </h3>
           </a>
-          </NavLink>
           <button
             className='navbar-toggler'
             type='button'
@@ -50,12 +54,16 @@ export default class NavBar extends Component {
             className='container collapse navbar-collapse d-flex justify-content-end'
             id='navbarSupportedContent'>
             <div>
-                <NavLink to='/cart'>
-              <span className='text-light'>
-                <i
-                  className='fa-solid fa-cart-shopping'
-                  style={{ marginBottom: `10px` }}></i>
-              </span>
+              <NavLink to='/cart'>
+                <span className='text-light'>
+                  <i
+                    className='fa-solid fa-cart-shopping'
+                    style={{ marginBottom: `10px` }}>
+                    <small style={{ top: `8px`, right: `210px`, position: `absolute`}}>
+                      {this.calCart(this.props.cart)}
+                    </small>
+                  </i>
+                </span>
               </NavLink>
             </div>
             <div className='mx-3 text-light'>

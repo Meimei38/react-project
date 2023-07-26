@@ -47,6 +47,10 @@ export default class ProductDetail extends Component {
                 <td className='col-6'>Giá bán</td>
                 <td className='col-6'>${detail.price}</td>
               </tr>
+              <tr className='row lh-lg'>
+                <td className='col-6'>Số lượng</td>
+                <td className='col-6'>{detail.quantity}</td>
+              </tr>
             </tbody>
           </table>
           <div className='btn-group d-flex justify-content-center m-4'>
